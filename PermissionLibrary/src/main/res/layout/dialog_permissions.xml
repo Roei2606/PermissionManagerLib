@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:rowCount="5">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/button_camera_permission"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="Request Camera Permission"
+                android:src="@drawable/ic_camera" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_camera_permission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Camera Permission" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/button_location_permission"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="Request Location Permission"
+                android:src="@drawable/ic_current_location" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_location_permission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Location Permission" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/button_storage_permission"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="Request Storage Permission"
+                android:src="@drawable/ic_storage" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_storage_permission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Storage Permission" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/button_contacts_permission"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="Request Contacts Permission"
+                android:src="@drawable/ic_contacts" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_contacts_permission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Contacts Permission" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/button_sms_permission"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="Request SMS Permission"
+                android:src="@drawable/ic_sms" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_sms_permission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="SMS Permission" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/button_phone_permission"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="Request Phone Permission"
+                android:src="@drawable/ic_phone" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_phone_permission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Phone Permission" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/button_audio_permission"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="Request Audio Permission"
+                android:src="@drawable/ic_audio" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_audio_permission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Record Audio Permission" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/button_calendar_permission"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="Request Calendar Permission"
+                android:src="@drawable/ic_calendar" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_calendar_permission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Calendar Permission" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/button_background_location_permission"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="Request Background Location Permission"
+                android:src="@drawable/ic_background_location" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_background_location_permission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Background Location Permission" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/button_internet_permission"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="Request Internet Permission"
+                android:src="@drawable/ic_internet" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_internet_permission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Internet Permission" />
+        </LinearLayout>
+
+    </GridLayout>
+</RelativeLayout>
