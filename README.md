@@ -22,3 +22,5 @@ dependencies {
 ```
 ## Usage
 
+### Step 1: Initialize and Configure PermissionManager in Your Activity
+In your Activity, create an instance of PermissionManager:
