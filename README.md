@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 ```
 ### Step 2: Configure Permissions in AndroidManifest
 Ensure that you have declared all the necessary permissions in your AndroidManifest.xml:
-```java
+```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.permissionmanagerproject">
 
