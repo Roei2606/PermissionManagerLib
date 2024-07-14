@@ -20,3 +20,4 @@ dependencies {
     implementation 'com.example:permissionlibrary:1.0.0'
 }
 ```
+
