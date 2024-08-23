@@ -4,9 +4,12 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
+import android.provider.Settings;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -26,6 +29,8 @@ public class PermissionManager implements PermissionResultListener {
 
     private static final String PREFS_NAME = "PermissionPrefs";
     private static final String PREFS_DENIED_SUFFIX = "_denied";
+    private static final String PREFS_DENIAL_COUNT_SUFFIX = "_denial_count";
+    private static final int MAX_DENIALS = 2;
 
     private Activity activity;
     private Map<Integer, String> permissionMap;
@@ -121,32 +126,36 @@ public class PermissionManager implements PermissionResultListener {
         }
     }
 
+
     public void handlePermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (permissions.length > 0 && grantResults.length > 0) {
             String permissionName = permissionMap.get(requestCode);
             boolean granted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
             Toast.makeText(activity, permissionName + " permission " + (granted ? "granted" : "denied"), Toast.LENGTH_SHORT).show();
-            updatePermissionTextColor(permissionName, granted);
             savePermissionState(permissions[0], !granted);
+            updatePermissionTextColor(permissionName, granted);
+            handleDenialRedirect(permissions[0]);
         }
     }
-
-    private void updatePermissionTextColor(String permissionName, boolean granted) {
-        int color = granted ? Color.GREEN : Color.RED;
-        int textViewId = getTextViewId(permissionName);
-
-        if (textViewId != 0 && dialog != null) {
-            MaterialTextView textView = dialog.findViewById(textViewId);
-            if (textView != null) {
-                textView.setTextColor(color);
-            }
-        }
-    }
-
     private void savePermissionState(String permission, boolean denied) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(permission + PREFS_DENIED_SUFFIX, denied);
+        if (denied) {
+            int denialCount = sharedPreferences.getInt(permission + PREFS_DENIAL_COUNT_SUFFIX, 0) + 1;
+            editor.putInt(permission + PREFS_DENIAL_COUNT_SUFFIX, denialCount);
+        }
         editor.apply();
+    }
+
+    private void handleDenialRedirect(String permission) {
+        int denialCount = sharedPreferences.getInt(permission + PREFS_DENIAL_COUNT_SUFFIX, 0);
+        if (denialCount >= MAX_DENIALS) {
+            // Redirect to app settings
+            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            Uri uri = Uri.fromParts("package", activity.getPackageName(), null);
+            intent.setData(uri);
+            activity.startActivity(intent);
+        }
     }
 
     private int getTextViewId(String permissionName) {
@@ -173,6 +182,28 @@ public class PermissionManager implements PermissionResultListener {
                 return R.id.text_internet_permission;
             default:
                 return 0;
+        }
+    }
+
+    private void updatePermissionTextColor(String permissionName, boolean granted) {
+        int color;
+        int denialCount = sharedPreferences.getInt(permissionName + PREFS_DENIAL_COUNT_SUFFIX, 0);
+
+        if (granted) {
+            color = Color.GREEN; // Green if granted
+        } else if (denialCount < MAX_DENIALS) {
+            color = Color.BLACK; // Black if denied fewer than MAX_DENIALS times
+        } else {
+            color = Color.RED; // Red if denied MAX_DENIALS times
+        }
+
+        int textViewId = getTextViewId(permissionName);
+
+        if (textViewId != 0 && dialog != null) {
+            MaterialTextView textView = dialog.findViewById(textViewId);
+            if (textView != null) {
+                textView.setTextColor(color);
+            }
         }
     }
 
